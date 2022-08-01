@@ -1,0 +1,11 @@
+Force constants for  x_trans
+Analytic_derivative == 0.018960310761731762 Hartree/Ang^2
+Numeric_derivative == 0.018634724839594604 Hartree/Ang^2
+
+Force constants for  y_trans
+Analytic_derivative == 0.009231205575136386 Hartree/Ang^2
+Numeric_derivative == 0.007623296525288702 Hartree/Ang^2
+
+Force constants for  z_trans
+Analytic_derivative == 0.013665928861826174 Hartree/Ang^2
+Numeric_derivative == 0.019693516335370604 Hartree/Ang^2

@@ -1,0 +1,12 @@
+#! /usr/bin/env python 
+
+import subprocess, re, os, time, random
+from glob import *
+
+transdats = ['x_trans.dat', 'y_trans.dat', 'z_trans.dat']
+
+print ("k(Hartree/Ang^2) nu(cm-1) ZPVE(cm-1) for translations")
+
+for dat in transdats:
+    subprocess.call("python3 harmonic_fit.py " + dat, shell = True)
+

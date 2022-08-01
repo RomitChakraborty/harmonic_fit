@@ -1,0 +1,53 @@
+Force constants for  z_trans
+Analytic_derivative == 0.013665928861826174 Hartree/Ang^2
+Numeric_derivative == 0.019693516335370604 Hartree/Ang^2
+Force constants for  mof5_ytrans
+Analytic_derivative == 4.756693944367121e-06 Hartree/Ang^2
+Numeric_derivative == 0.0 Hartree/Ang^2
+Force constants for  mof5_xtrans
+Analytic_derivative == 4.391729699472497e-06 Hartree/Ang^2
+Numeric_derivative == 111.02230246251563 Hartree/Ang^2
+Force constants for  smooth_c3
+Analytic_derivative == 0.0012582758058048025 Hartree/Ang^2
+Numeric_derivative == 0.0013698111106378143 Hartree/Ang^2
+Force constants for  y_trans
+Analytic_derivative == 0.009231205575136386 Hartree/Ang^2
+Numeric_derivative == 0.007623296525288702 Hartree/Ang^2
+Force constants for  x_stretch
+Analytic_derivative == 4.871889713579602 Hartree/Ang^2
+Numeric_derivative == -0.7589414990558095 Hartree/Ang^2
+Force constants for  smooth_x_trans
+Analytic_derivative == 0.04724506874184786 Hartree/Ang^2
+Numeric_derivative == 0.04685151186011992 Hartree/Ang^2
+Force constants for  mof5_ztrans
+Analytic_derivative == 1.2544626893579016e-06 Hartree/Ang^2
+Numeric_derivative == 0.0 Hartree/Ang^2
+Force constants for  x_trans
+Analytic_derivative == 0.018960310761731762 Hartree/Ang^2
+Numeric_derivative == 0.018634724839594604 Hartree/Ang^2
+relaxed_zphi_b97-d.dat
+relaxed_zphi.dat
+h2_b97d_radians.dat
+y_theta.dat
+z_trans.dat
+h2_mv_svp.dat
+h2_b97d.dat
+mof5_ytrans.dat
+mof5_xtrans.dat
+mode_2.dat
+smooth_c3.dat
+he2.dat
+mode_3.dat
+mode_1.dat
+z_phi.dat
+y_trans.dat
+mode_4.dat
+mode_5.dat
+h2_on_vmfu.dat
+x_stretch.dat
+mode_6.dat
+smooth_x_trans.dat
+mof5_ztrans.dat
+x_trans.dat
+e_phi.dat
+e_theta.dat

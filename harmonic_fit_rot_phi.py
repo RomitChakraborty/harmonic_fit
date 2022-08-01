@@ -1,0 +1,91 @@
+#! /usr/bin/env python 
+
+import subprocess, re, os, time, random
+#from harmonic_fit import comp_k_analytic
+import sys
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+#from mpl_toolkits.mplot3d import axes3d
+from scipy.interpolate import interp1d, CubicSpline
+
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams['axes.edgecolor']='#333F4B'
+plt.rcParams['axes.linewidth']=0.8
+plt.rcParams['xtick.color']='#333F4B'
+plt.rcParams['ytick.color']='#333F4B'
+plt.rcParams["axes.prop_cycle"]
+
+# Read CSV
+csvFileName = sys.argv[1]
+scan_var = csvFileName.split('.')[0]
+pltFileName = scan_var + '.png'
+
+csvData = []
+
+with open(csvFileName, 'r') as csvFile:
+    csvReader = csv.reader(csvFile, delimiter = ' ')
+    for csvRow in csvReader:
+        csvData.append(csvRow)
+
+# Get X, Y and store in np array
+
+csvData = np.array(csvData)
+csvData = csvData.astype(np.float)
+X, Y = csvData[:,0], csvData[:,1]
+
+au_to_kJpmol = 2625.5 
+
+# convert kJpmol to au
+
+Y = np.array([y/au_to_kJpmol for y in Y])
+
+def comp_k_analytic(X,Y):
+    """
+    Compute the analytic force constant given X, and V(X)    
+    """
+    N = X.size
+    eq = 0
+    f2 = CubicSpline(X,Y)
+    k_analytic = f2(X, 2)[0]
+    return k_analytic, f2
+
+def convert_k_to_cminv_rotor(k):
+    """
+    Convert force constant in Hartree/Radian^2 to cm-1
+    this is for h2
+    """
+    I = 1948.37443393238771437461228584
+    nu = 1/(2*np.pi)*math.sqrt(k/I)*(1/(137*5.29*10**-9))
+    return nu
+
+
+
+#k_numeric = comp_k_numeric(X, Y)
+k_analytic, f2 = comp_k_analytic(X, Y)
+nu_analytic = convert_k_to_cminv_rotor(k_analytic)
+zpve_analytic = nu_analytic/2
+
+
+print (scan_var, "Analytic", k_analytic, nu_analytic, zpve_analytic)
+
+
+#k_numeric = comp_k_numeric(X, Y)
+#k_analytic, f2 = comp_k_analytic(X, Y)
+
+#print ("Force constants for ", scan_var)
+#print ("Analytic_derivative ==", k_analytic, "Hartree/Ang^2")
+#print ("Numeric_derivative ==", k_numeric, "Hartree/Ang^2")
+
+plt.plot(X, Y, 'bo')
+plt.plot(X, f2(X), 'b-')
+plt.plot(X, f2(X, 1), 'rx--')
+plt.plot(X, f2(X, 2), 'co')
+
+plt.legend(['Points', 'Cubic Spline', r'dV/d${\phi}$', r"d2V/d${\phi}^{2}$"], fontsize = 12)
+plt.xlabel(r"$\phi$", fontsize = 16)
+plt.ylabel("E(a.u) and higher derivs", fontsize = 16)
+
+plt.savefig(pltFileName)
